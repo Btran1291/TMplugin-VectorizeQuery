@@ -1,0 +1,67 @@
+{
+    "id": "vectorize_rag_retrieve",
+    "uuid": "8f485412-4b6b-4b72-9a1a-facc8a122e13",
+    "emoji": "🧩",
+    "title": "Vectorize Query",
+    "iconURL": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAABAtJREFUWEe1V01LHEsUPYUf027cuHIxUZRoMo8ZZPQfyAxONm4iIQmoiBtN9jHyBlF3xo2C2QhvskjIe/gD1IUDEUSYXoiagLMz8xCcoMIkeSAodKiq/qjqqp7uJLxeNfVx69a559x7iwCw8L99BASWfAAhgOUdSX7ZAbrT+bRXiGZau0o36B+LZl6G1vGZ+uvsj2SHLxKXyv8uzAHWxIP9Lqlb6rkkzal3YCN2jBUzAV5oTTIvI2Ej3KdOMN0pzRplLvxcOyAOmcNYZM8HcYgAxOJKJJiZeYGOjg6tKPP5PC4uLgCfjESwnEPi8ThmZ2c1diycnJSxsrLizkmOlUwTfyQSODw89G0mGBl5iLOzM3u8Pod7e3tQKLzxRZGgvz+ND7u7yGYybowFBADTNGEYBpLJpLBZWvJbKatSqaBcLiPDHOCfhIBplmAYLcwBNkO/qHlSUiYniD/u3IETZDLZAAdKJowWjoCiVwK0tbXh5uYGtdpXnhkIgcXSKkeptbUVTY1NuLy81IooOgKppHdzLm524MHBATo7OxGP38H3/75J6LQYBj5XKtjf38fw8LCaAi0gGAEbKxqCmNGCFENA1df4+DgKfxXw/PkzrL1+LR0yOTmJ9fV1DA4OolgsarnCHDgpI5MN5IBHQp0DsViM3eLq6gqJRILXOYsqk+D4+Bi3t7fo6+vz6MUUbpOJWKh8DiEhlSFVAUdAdMFj5MLiAvJ/5pHL5bC1tcXWZbNZbG9vY2JiAoVCQXt7aoGGKEQFngNB5G9vb8fp6SmKxR3kcg/YYZubm0in0yyJXV9fB0pVJqGdUUWheXkgxYe1FcXCu7dv8fjJU9y/fw8NDQ349PEjFhYXMTc3p2pbQLLyr80BJkNu38syBDCpDO1E5L8Gy8AsLxAMDAyAEnZtbQ3Nzc0YHR1l6jg/P9ey3xmMIEPBASkBqnDt7e0hlUoxBDY2NjA2NiZ3DGLnZSPpIVBPBTEDSZoHlDzpxYP+jTx6hH/+fs+WpdP9LEd4nyZ9E4SrQKwFEpYae41NjXg58xK1Wg2rq6sa4tmbnBk3EelqgZuITBgxA6lUUm7BwpuEAL7KG0UOKPWUDpTMEnru9mKnuKPcaGpqCtXqF08dUqGSD+rq6sLy8rJiY2hoCJQ7vBhxoUs7l5aW0N3dbbcnTpvC7UxPT6Nareo17tYL7hV14NXSK1agaE100hidPTo6wvz8vG2Hz6k5hxAQy/egcI8OjkdoBbcdFR8rWmvyoMz+qO1BYD72qreNtPR2Eu+g0IS1g3b9CUy3yoQTHqf1VBo1IQRB4Erjbrz97zsVN4mnAS5HbvjqKtG1Iq5Sd+hmIyhceMfJD1sPzFArAQt4MVJVEGrvp59NDv6q5R8DpO8U5IwXjwAAAABJRU5ErkJggg==",
+    "openaiSpec": {
+        "name": "vectorize_rag_retrieve",
+        "parameters": {
+            "type": "object",
+            "required": [
+                "question"
+            ],
+            "properties": {
+                "question": {
+                    "type": "string",
+                    "description": "The question to ask the Vectorize RAG pipeline to retrieve relevant information. Utilize the context of the conversation to formulate the optimal query."
+                }
+            }
+        },
+        "description": "Retrieves training data/knowledge base from a Vectorize RAG pipeline based on the user's question for relevant information. The search questions should contains the keywords or topics related to the conversation."
+    },
+    "outputType": "respond_to_ai",
+    "oauthConfig": null,
+    "userSettings": [
+        {
+            "name": "accessToken",
+            "type": "password",
+            "label": "Vectorize Access Token",
+            "required": true,
+            "description": "Your Vectorize API access token."
+        },
+        {
+            "name": "orgId",
+            "label": "Organization ID",
+            "required": true,
+            "description": "Your Vectorize Organization ID."
+        },
+        {
+            "name": "pipelineId",
+            "label": "Pipeline ID",
+            "required": true,
+            "description": "The ID of the Vectorize pipeline to query."
+        },
+        {
+            "name": "numResults",
+            "type": "number",
+            "label": "Maximum Results",
+            "description": "The maximum number of results to return. Must be a positive integer. Default is '5'.",
+            "defaultValue": 5
+        },
+        {
+            "name": "rerank",
+            "type": "enum",
+            "label": "Rerank Results",
+            "values": [
+                "true",
+                "false"
+            ],
+            "description": "Determines whether to order the results by relevance score (true) or similarity score (false). When set to 'true', results are ordered by relevance scores from the Cohere reranking model. When set to 'false', results are ordered by similarity scores from the vector search. Default is 'true'.",
+            "defaultValue": "true"
+        }
+    ],
+    "authenticationType": "AUTH_TYPE_NONE",
+    "implementationType": "javascript",
+    "dynamicContextEndpoints": []
+}
